@@ -16,11 +16,19 @@ public class CreateMessageActivity extends AppCompatActivity {
     }
 
     public void onSendMessage(View view) {
-        Intent intent = new Intent(this,ReceiveMessageActivity.class);
 
         EditText inputText = (EditText) findViewById(R.id.message);
+        String messageText = inputText.getText().toString();
 
-        intent.putExtra(ReceiveMessageActivity.EXTRA_MESSAGE,inputText.getText().toString());
+//        Intent intent = new Intent(this,ReceiveMessageActivity.class);
+//        intent.putExtra(ReceiveMessageActivity.EXTRA_MESSAGE,inputText.getText().toString());
+
+
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("text/plain");
+        intent.putExtra(Intent.EXTRA_TEXT,messageText);
+
         startActivity(intent);
+
     }
 }
